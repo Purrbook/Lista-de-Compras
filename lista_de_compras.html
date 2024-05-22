@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Lista de Compras</title>
+</head>
+<body>
+
+<script>
+  //listas vazias
+  let frutas = [];
+  let laticinios = [];
+  let doces = [];
+  let bebidas = [];
+
+  let pergunta;
+
+  //condiçoes
+  do {
+    pergunta = prompt("Gostaria de adicionar ou remover algo a sua lista de compras? (adicionar/remover/não)");
+    //retorna a pergunta caso o usuario nao digite uma das opçoes possiveis
+    if (pergunta.toLowerCase() !== 'adicionar' && pergunta.toLowerCase() !== 'remover' && pergunta.toLowerCase() !== 'não') {
+      alert("Resposta inválida!");
+    }
+    //caso o usuario digite alguma das opçoes possiveis
+  } while (pergunta.toLowerCase() !== 'adicionar' && pergunta.toLowerCase() !== 'remover' && pergunta.toLowerCase() !== 'não');
+  //caso responda nao
+  if (pergunta.toLowerCase() === 'não') {
+    alert("Nada foi adicionado à sua lista de compras");
+  } else {
+    //caso adicione
+    while (pergunta.toLowerCase() === 'adicionar' || pergunta.toLowerCase() === 'remover') {
+      if (pergunta.toLowerCase() === 'adicionar') {
+        //pergunta oq quer adicionar dando as opçoes
+        let categoria = prompt("Qual categoria deseja adicionar? (frutas, laticinios, doces, bebidas)").toLowerCase();
+        if (categoria === 'frutas') {
+          let fruta = prompt("Qual fruta deseja adicionar?");
+          frutas.push(fruta);
+        } else if (categoria === 'laticinios') {
+          let laticinio = prompt("Qual laticínio deseja adicionar?");
+          laticinios.push(laticinio);
+        } else if (categoria === 'doces') {
+          let doce = prompt("Qual doce deseja adicionar?");
+          doces.push(doce);
+        } else if (categoria === 'bebidas') {
+          let bebida = prompt("Qual bebida deseja adicionar?");
+          bebidas.push(bebida);
+          //caso nao responda nenhuma das opçoes
+        } else {
+          alert("Categoria inválida!");
+        }
+        //caso remova algum item
+      } else if (pergunta.toLowerCase() === 'remover') {
+        let categoria = prompt("Qual categoria deseja remover? (frutas, laticinios, doces, bebidas)").toLowerCase();
+        if (categoria === 'frutas') {
+          let fruta = prompt("Qual fruta deseja remover?");
+          let index = frutas.indexOf(fruta);
+          if (index !== -1) {
+            frutas.splice(index, 1);
+          } else {
+            alert("Fruta não encontrada na lista");
+          }
+        } else if (categoria === 'laticinios') {
+          let laticinio = prompt("Qual laticínio deseja remover?");
+          let index = laticinios.indexOf(laticinio);
+          if (index !== -1) {
+            laticinios.splice(index, 1);
+          } else {
+            alert("Laticínio não encontrado na lista");
+          }
+        } else if (categoria === 'doces') {
+          let doce = prompt("Qual doce deseja remover?");
+          let index = doces.indexOf(doce);
+          if (index !== -1) {
+            doces.splice(index, 1);
+          } else {
+            alert("Doce não encontrado na lista");
+          }
+        } else if (categoria === 'bebidas') {
+          let bebida = prompt("Qual bebida deseja remover?");
+          let index = bebidas.indexOf(bebida);
+          if (index !== -1) {
+            bebidas.splice(index, 1);
+          } else {
+            alert("Bebida não encontrada na lista");
+          }
+        } else {
+          alert("Categoria inválida!");
+        }
+      }
+      pergunta = prompt("Gostaria de adicionar ou remover mais algo da sua lista de compras? (adicionar/remover/não)").toLowerCase();
+    }
+  }
+//retorna com a lista de compras
+  alert(`Lista de compras:\nFrutas: ${frutas.join(", ")}\nLaticínios: ${laticinios.join(", ")}\nDoces: ${doces.join(", ")}\nBebidas: ${bebidas.join(", ")}`);
+</script>
+
+</body>
+</html>
